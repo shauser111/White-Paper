@@ -6,16 +6,20 @@
     <title>Project Island: The Knowledge Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script> -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <style>
         html {
             scroll-behavior: smooth;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            /* Removed fixed padding-top. The fixed navigation will now overlap, which is corrected by the buffer div inside each section. */
-            background-color: #F7F2EB;
+            font-family: 'Inter', sans-serif;
+            /* Updated main body background color to white for contrast */
+            background-color: #ffffff; 
         }
         .chart-container {
             position: relative;
@@ -41,9 +45,9 @@
         .deep-dive h3 {
             font-size: 1.5rem;
             font-weight: 700;
-            color: #7096D1;
+            color: #e05915; /* Updated to new secondary/orange */
             margin-top: 2rem;
-            border-bottom: 1px solid #D0E3FF;
+            border-bottom: 1px solid #c2dde6; /* Updated to light blue */
             padding-bottom: 0.5rem;
         }
         .deep-dive ul, .deep-dive ol {
@@ -51,126 +55,125 @@
             list-style: disc;
             margin-top: 1rem;
         }
-        /* .scroll-reveal {
-            opacity: 0;
-            transform: translateY(20px);
-        } */
+        .material-icons {
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px; 
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: 'liga';
+        }
     </style>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    // Updated Color Palette
                     colors: {
-                        'primary': '#081F5C',
-                        'secondary': '#7096D1',
-                        'accent': '#D0E3FF',
-                        'light': '#EDF1F6',
-                        'lighter': '#F7F2EB',
-                        'dark': '#222',
-                        'subtle-bg': '#EDF1F6'
+                        'primary': '#431c5d',     // Purple
+                        'secondary': '#e05915',   // Orange
+                        'accent': '#bccbde',      // Grey silver
+                        'light': '#c2dde6',       // Lightsaber Blue
+                        'lighter': '#ffffff',     // White (for main BG)
+                        'dark': '#222',           // Dark Grey Text
+                        'subtle-bg': '#c2dde6'    // Lightsaber Blue
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="text-dark">
-
-    <!-- Fixed Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 bg-primary shadow-xl z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<body class="text-dark"> <nav class="fixed top-0 left-0 right-0 bg-primary shadow-xl z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20">
                 <div class="flex items-center">
                     <span class="text-2xl font-bold text-white tracking-wider">PROJECT ISLAND</span>
                 </div>
                 <div class="flex items-center space-x-4 sm:space-x-8">
-                    <a href="#visuals" class="text-white hover:text-D0E3FF px-3 py-2 rounded-md text-sm font-medium transition duration-150">Visual Analysis</a>
-                  
-                    <a href="#report" class="text-white hover:text-D0E3FF px-3 py-2 rounded-md text-sm font-medium transition duration-150">Written Report</a>
-                   
-                   
-                    <a href="#audio" class="text-white hover:text-D0E3FF px-3 py-2 rounded-md text-sm font-medium transition duration-150">Audio Summary</a>
-               <a href="https://happymachinesandhumans.com" target="_blank" class="text-white hover:text-D0E3FF px-3 py-2 rounded-md text-sm font-medium transition duration-150">HMH</a>
+                    <a href="#visuals" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition duration-150">Visual Analysis</a>
+                    <a href="#report" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition duration-150">Written Report</a>
+                    <a href="#audio" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition duration-150">Audio Summary</a>
+                    <a href="https://happymachinesandhumans.com" target="_blank" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition duration-150">HMH</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <header class="bg-primary text-white p-8 sm:p-12 shadow-xl">
-        <div class="max-w-7xl mx-auto">
-            <p class="text-lg sm:text-xl font-semibold text-D0E3FF uppercase tracking-wide">Project Briefing P-AI-LOCAL-001</p>
-            <h1 class="text-4xl sm:text-6xl font-bold mt-2 mb-4">The "Island" Workstation</h1>
-            <p class="text-xl sm:text-2xl text-EDF1F6 max-w-4xl">A unified hub for the project's visual, written, and auditory deep dives, centered on <span class="font-bold text-white">computational sovereignty</span>.</p>
+    <header class="bg-primary text-white p-8 sm:p-12 shadow-xl"> <div class="max-w-7xl mx-auto">
+            <p class="text-lg sm:text-xl font-semibold text-secondary uppercase tracking-wide">Project Briefing P-AI-LOCAL-001</p>
+            <h1 class="text-4xl sm:text-6xl font-bold mt-2 mb-4">The Island Workstation</h1>
+            <p class="text-xl sm:text-2xl text-light max-w-4xl">A unified hub for the project's visual, written, and auditory deep dives, centered on <span class="font-bold text-white">computational sovereignty</span>.</p>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto p-4 sm:p-8 grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
 
-        <!-- ********************************************************** -->
-        <!-- SECTION 1: VISUAL ANALYSIS (Original Infographic Content) -->
-        <!-- ********************************************************** -->
-
         <section id="visuals" class="lg:col-span-3">
-             <!-- Invisible buffer div to prevent fixed header from covering content when scrolling to this anchor -->
              <div class="h-20 sm:h-24"></div>
-             
              <h2 class="text-4xl font-extrabold text-primary mb-6 text-center">Visual Analysis: Infographic Key Data</h2>
              <p class="text-xl text-gray-700 mb-8 max-w-4xl mx-auto text-center">Explore the core metrics and feasibility analysis of the Target Island build through clear, data-driven visualizations.</p>
         </section>
 
-        <section class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-            <h2 class="text-3xl font-bold text-primary mb-6 text-center">The "Island" Rationale: Why Local-First?</h2>
+        <section class="lg:col-span-3 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-primary mb-6 text-center">The Island Rationale: Why Local-First?</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <div class="border-l-4 border-primary p-6 bg-D0E3FF rounded-r-lg rationale-card">
-                    <span class="text-4xl">🛡️</span>
+                <div class="border-l-4 border-primary p-6 bg-light rounded-r-lg rationale-card">
+                    <span class="material-icons text-4xl text-primary">security</span>
                     <h3 class="text-2xl font-bold text-primary my-2">Absolute Data Privacy</h3>
                     <p class="text-dark">The "Island" model provides a <span class="font-semibold">physically guaranteed</span> level of privacy. Research and data never leave the local hardware, mitigating all third-party access risks.</p>
                 </div>
 
-                <div class="border-l-4 border-secondary p-6 bg-D0E3FF rounded-r-lg rationale-card">
-                    <span class="text-4xl">⚙️</span>
+                <div class="border-l-4 border-secondary p-6 bg-light rounded-r-lg rationale-card">
+                    <span class="material-icons text-4xl text-secondary">settings</span>
                     <h3 class="text-2xl font-bold text-secondary my-2">Total Control & Freedom</h3>
                     <p class="text-dark">By running uncensored open-source models, the "Island" eliminates external, corporate guardrails. This removes friction for academic and creative experimentation.</p>
                 </div>
                 
-                <div class="border-l-4 border-accent p-6 bg-D0E3FF rounded-r-lg rationale-card">
-                    <span class="text-4xl">💰</span>
-                    <h3 class="text-2xl font-bold text-accent my-2">Cost & IP Ownership</h3>
+                <div class="border-l-4 border-accent p-6 bg-light rounded-r-lg rationale-card">
+                    <span class="material-icons text-4xl text-secondary">monetization_on</span> <h3 class="text-2xl font-bold text-secondary my-2">Cost & IP Ownership</h3>
                     <p class="text-dark">A one-time capital expense replaces perpetual "pay-as-you-go" cloud fees. It grants the unrestricted <span class="font-semibold">capability</span> to experiment on any data, a freedom not possible under cloud terms of service.</p>
                 </div>
             </div>
         </section>
 
-        <section class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
-            <h2 class="text-3xl font-bold text-primary mb-6">"Cloud" vs. "Island": A Paradigm Showdown</h2>
-            <p class="text-lg text-gray-700 mb-6 max-w-4xl mx-auto text-center">The project evaluates two competing models. The "Cloud" model offers ease of access, but the "Island" model is the only architecture that satisfies all project requirements for privacy, control, and long-term ownership.</p>
+        <section class="lg:col-span-3 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
+            <h2 class="text-3xl font-bold text-primary mb-6">Cloud vs. Island: A Paradigm Showdown</h2>
+            <p class="text-lg text-gray-700 mb-6 max-w-4xl mx-auto text-center">The project evaluates two competing models. The Cloud model offers ease of access, but the "Island" model is the only architecture that satisfies all project requirements for privacy, control, and long-term ownership.</p>
             <div class="overflow-x-auto">
                 <table class="w-full min-w-max border border-gray-200 divide-y divide-gray-200">
-                    <thead class="bg-EDF1F6">
+                    <thead class="bg-light">
                         <tr>
                             <th class="p-4 text-left text-sm font-semibold text-primary uppercase tracking-wider">Metric</th>
-                            <th class="p-4 text-left text-sm font-semibold text-primary uppercase tracking-wider">"Cloud" Model (Service-Based)</th>
+                            <th class="p-4 text-left text-sm font-semibold text-primary uppercase tracking-wider">Cloud Model (Service-Based)</th>
                             <th class="p-4 text-left text-sm font-semibold text-primary uppercase tracking-wider">"Island" Model (Local-First)</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr class="hover:bg-EDF1F6">
+                    <tbody class="bg-accent divide-y divide-gray-200">
+                        <tr class="hover:bg-light">
                             <td class="p-4 font-semibold">Privacy</td>
                             <td class="p-4">Contractual (Data is uploaded)</td>
                             <td class="p-4 font-bold text-primary">Physical (Data never leaves)</td>
                         </tr>
-                        <tr class="hover:bg-EDF1F6">
+                        <tr class="hover:bg-light">
                             <td class="p-4 font-semibold">Control</td>
                             <td class="p-4">Subject to corporate guardrails</td>
                             <td class="p-4 font-bold text-primary">Total user control (uncensored)</td>
                         </tr>
-                        <tr class="hover:bg-EDF1F6">
+                        <tr class="hover:bg-light">
                             <td class="p-4 font-semibold">Cost Model</td>
                             <td class="p-4">Perpetual (Pay-as-you-go utility)</td>
                             <td class="p-4 font-bold text-primary">One-Time (Capital investment)</td>
                         </tr>
-                        <tr class="hover:bg-EDF1F6">
+                        <tr class="hover:bg-light">
                             <td class="p-4 font-semibold">IP Experimentation</td>
                             <td class="p-4">Forbidden by Terms of Service</td>
                             <td class="p-4 font-bold text-primary">Unrestricted capability</td>
@@ -180,7 +183,7 @@
             </div>
         </section>
 
-        <section class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+        <section class="lg:col-span-3 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold text-primary mb-6">The "Island" Technical Ecosystem</h2>
             <p class="text-lg text-gray-700 mb-8 max-w-4xl mx-auto text-center">The workstation is an ecosystem with five distinct layers, starting from the physical hardware and moving up to the models and their future interoperability.</p>
             <div class="flex flex-col items-center">
@@ -206,14 +209,14 @@
                     <div class="flex justify-center my-2 reveal-item">
                         <span class="text-2xl text-accent font-bold">↓</span>
                     </div>
-                    <div class="p-4 bg-D0E3FF text-primary rounded-lg shadow-md text-center reveal-item">
+                    <div class="p-4 bg-light text-primary rounded-lg shadow-md text-center reveal-item">
                         <span class="text-xs font-semibold uppercase">Layer 4</span>
                         <h3 class="text-xl font-bold">Models (Llama 3.1, SD3)</h3>
                     </div>
                     <div class="flex justify-center my-2 reveal-item">
-                        <span class="text-2xl text-D0E3FF font-bold">↓</span>
+                        <span class="text-2xl text-light font-bold">↓</span>
                     </div>
-                    <div class="p-4 bg-EDF1F6 text-secondary rounded-lg shadow-md text-center border border-D0E3FF reveal-item">
+                    <div class="p-4 bg-white text-secondary rounded-lg shadow-md text-center border border-accent reveal-item">
                         <span class="text-xs font-semibold uppercase">Layer 5</span>
                         <h3 class="text-xl font-bold">Interoperability (Future)</h3>
                     </div>
@@ -221,7 +224,7 @@
             </div>
         </section>
         
-        <section class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+        <section class="lg:col-span-3 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold text-primary mb-6">Hardware Analysis: The Primacy of VRAM</h2>
             <p class="text-lg text-gray-700 mb-8 max-w-4xl mx-auto text-center">In an AI workstation, the <strong>GPU is the "brain"</strong>, and its <strong>VRAM is the "workbench."</strong> VRAM is the single most important metric, as it sets a hard physical limit on the size of models that can be run at high speed. It is distinct from slow System RAM and specialized Unified Memory.</p>
             <div class="chart-container" style="max-height: 500px;">
@@ -230,7 +233,7 @@
             <p class="text-md text-gray-600 mt-4 text-center">This chart compares the estimated upfront cost (blue, left axis) against the available VRAM (light blue, right axis) for each build. The "Better" build hits the sweet spot for 16GB VRAM capacity and speed, while the DGX Spark trades inference speed for massive VRAM, and the 4090 builds show high cost for limited VRAM gains.</p>
         </section>
 
-        <section class="lg:col-span-1 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+        <section class="lg:col-span-1 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold text-primary mb-6">Annual Power Cost</h2>
             <p class="text-lg text-gray-700 mb-8">Estimated electrical cost when running 24/7. The "Target" build has a moderate power cost, while the high-performance 4090 builds become significantly more expensive to operate.</p>
             <div class="chart-container" style="height: 350px; max-height: 400px;">
@@ -238,7 +241,7 @@
             </div>
         </section>
 
-        <section class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+        <section class="lg:col-span-2 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold text-primary mb-6">"Target Island" Cost Composition</h2>
             <p class="text-lg text-gray-700 mb-8">A breakdown of the estimated ~$2,713 average cost for the recommended "Target" build. The GPU represents the largest single investment, highlighting its central role in the system's architecture and budget.</p>
             <div class="chart-container" style="height: 350px; max-height: 400px;">
@@ -246,83 +249,83 @@
             </div>
         </section>
 
-        <section class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+        <section class="lg:col-span-3 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold text-primary mb-6 text-center">Project Capabilities & Applications</h2>
             <p class="text-lg text-gray-700 mb-8 max-w-4xl mx-auto text-center">The "Target "Island" build enables four key applications, all processed 100% locally with no data uploads or external dependencies.</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="text-center p-6 bg-D0E3FF rounded-lg shadow-md capability-card">
-                    <span class="text-5xl">📚</span>
+                <div class="text-center p-6 bg-light rounded-lg shadow-md capability-card">
+                    <span class="material-icons text-5xl text-primary">menu_book</span>
                     <h3 class="text-xl font-bold text-primary my-3">Private Academic Workstation</h3>
                     <p class="text-dark">Perform RAG on a local library of PDFs. Ask complex questions of private research data.</p>
                 </div>
-                <div class="text-center p-6 bg-D0E3FF rounded-lg shadow-md capability-card">
-                    <span class="text-5xl">🔬</span>
+                <div class="text-center p-6 bg-light rounded-lg shadow-md capability-card">
+                    <span class="material-icons text-5xl text-primary">science</span>
                     <h3 class="text-xl font-bold text-primary my-3">Custom Model Fine-Tuning</h3>
                     <p class="text-dark">Use PEFT/LoRA to train a model on a specific writing style, creating a custom "Academic Voice" adapter.</p>
                 </div>
-                <div class="text-center p-6 bg-D0E3FF rounded-lg shadow-md capability-card">
-                    <span class="text-5xl">🎵</span>
+                <div class="text-center p-6 bg-light rounded-lg shadow-md capability-card">
+                    <span class="material-icons text-5xl text-primary">music_note</span>
                     <h3 class="text-xl font-bold text-primary my-3">The "Owned Studio"</h3>
                     <p class="text-dark">Generate text-to-music loops and perform 100% local voice cloning for creative audio projects.</p>
                 </div>
-                <div class="text-center p-6 bg-D0E3FF rounded-lg shadow-md capability-card">
-                    <span class="text-5xl">🎨</span>
+                <div class="text-center p-6 bg-light rounded-lg shadow-md capability-card">
+                    <span class="material-icons text-5xl text-primary">palette</span>
                     <h3 class="text-xl font-bold text-primary my-3">Internal Design Agency</h3>
                     <p class="text-dark">Run models like Stable Diffusion 3 to create logos, graphics, and art without stock photo licensing.</p>
                 </div>
             </div>
         </section>
 
-        <section class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+        <section class="lg:col-span-3 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold text-primary mb-8 text-center">Implementation & Data Lifecycle</h2>
             
             <h3 class="text-2xl font-semibold text-secondary mb-4">7-Phase Implementation Plan</h3>
             <div class="relative overflow-x-auto pb-4">
                 <div class="flex space-x-4 sm:space-x-0 sm:grid sm:grid-cols-7 text-center">
                     <div class="flex-shrink-0 w-32 sm:w-auto phase-item">
-                        <div class="p-3 bg-D0E3FF rounded-lg shadow">
+                        <div class="p-3 bg-light rounded-lg shadow">
                             <span class="text-primary font-bold">P1</span>
                             <p class="text-sm">Physical Build</p>
                         </div>
                     </div>
                     <div class="hidden sm:flex items-center justify-center text-2xl text-secondary font-bold">→</div>
                     <div class="flex-shrink-0 w-32 sm:w-auto phase-item">
-                        <div class="p-3 bg-EDF1F6 rounded-lg shadow">
+                        <div class="p-3 bg-accent rounded-lg shadow">
                             <span class="text-primary font-bold">P2</span>
                             <p class="text-sm">OS & Drivers</p>
                         </div>
                     </div>
                     <div class="hidden sm:flex items-center justify-center text-2xl text-secondary font-bold">→</div>
                     <div class="flex-shrink-0 w-32 sm:w-auto phase-item">
-                        <div class="p-3 bg-D0E3FF rounded-lg shadow">
+                        <div class="p-3 bg-light rounded-lg shadow">
                             <span class="text-primary font-bold">P3</span>
                             <p class="text-sm">Runtimes</p>
                         </div>
                     </div>
                     <div class="hidden sm:flex items-center justify-center text-2xl text-secondary font-bold">→</div>
                     <div class="flex-shrink-0 w-32 sm:w-auto phase-item">
-                        <div class="p-3 bg-EDF1F6 rounded-lg shadow">
+                        <div class="p-3 bg-accent rounded-lg shadow">
                             <span class="text-primary font-bold">P4</span>
                             <p class="text-sm">Applications</p>
                         </div>
                     </div>
                     <div class="hidden sm:flex items-center justify-center text-2xl text-secondary font-bold">→</div>
                     <div class="flex-shrink-0 w-32 sm:w-auto phase-item">
-                        <div class="p-3 bg-D0E3FF rounded-lg shadow">
+                        <div class="p-3 bg-light rounded-lg shadow">
                             <span class="text-primary font-bold">P5</span>
                             <p class="text-sm">Models</p>
                         </div>
                     </div>
                     <div class="hidden sm:flex items-center justify-center text-2xl text-secondary font-bold">→</div>
                     <div class="flex-shrink-0 w-32 sm:w-auto phase-item">
-                        <div class="p-3 bg-EDF1F6 rounded-lg shadow">
+                        <div class="p-3 bg-accent rounded-lg shadow">
                             <span class="text-primary font-bold">P6</span>
                             <p class="text-sm">Verification</p>
                         </div>
                     </div>
                     <div class="hidden sm:flex items-center justify-center text-2xl text-secondary font-bold">→</div>
                     <div class="flex-shrink-0 w-32 sm:w-auto phase-item">
-                        <div class="p-3 bg-D0E3FF rounded-lg shadow">
+                        <div class="p-3 bg-light rounded-lg shadow">
                             <span class="text-primary font-bold">P7</span>
                             <p class="text-sm">Benchmark</p>
                         </div>
@@ -333,32 +336,32 @@
             <h3 class="text-2xl font-semibold text-secondary mt-10 mb-4">Data Lifecycle & Backup Strategy</h3>
             <p class="text-lg text-gray-700 mb-6">A multi-stage strategy provides robust, versioned data protection against failure, disaster, or theft.</p>
             <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
-                <div class="text-center p-6 bg-white border-2 border-primary rounded-lg shadow-md w-60 storage-item">
-                    <span class="text-4xl">⚡</span>
+                <div class="text-center p-6 bg-lighter border-2 border-primary rounded-lg shadow-md w-60 storage-item">
+                    <span class="material-icons text-4xl text-primary">bolt</span>
                     <h4 class="text-xl font-bold text-primary">Hot Storage</h4>
                     <p class="text-sm">4TB NVMe SSD<br>(OS & Active Projects)</p>
                 </div>
                 <div class="text-3xl text-secondary font-bold">→</div>
-                <div class="text-center p-6 bg-D0E3FF border-2 border-secondary rounded-lg shadow-md w-60 storage-item">
-                    <span class="text-4xl">🗄️</span>
+                 <div class="text-center p-6 bg-light border-2 border-secondary rounded-lg shadow-md w-60 storage-item">
+                    <span class="material-icons text-4xl text-primary">inventory_2</span>
                     <h4 class="text-xl font-bold text-primary">Cold Storage (Local)</h4>
                     <p class="text-sm">16TB HDD "Vault"<br>(Nightly ZFS Snapshots)</p>
                 </div>
                 <div class="text-3xl text-secondary font-bold">→</div>
-                <div class="text-center p-6 bg-EDF1F6 border-2 border-secondary rounded-lg shadow-md w-60 storage-item">
-                    <span class="text-4xl">📦</span>
+                <div class="text-center p-6 bg-accent border-2 border-secondary rounded-lg shadow-md w-60 storage-item">
+                    <span class="material-icons text-4xl text-gray-600">archive</span>
                     <h4 class="text-xl font-bold text-gray-600">Cold Storage (Off-Site)</h4>
                     <p class="text-sm">4TB External USB<br>(Bi-Weekly Encrypted Backup)</p>
                 </div>
             </div>
         </section>
 
-        <section class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+        <section class="lg:col-span-3 bg-accent p-6 sm:p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold text-primary mb-6 text-center">The Financial Case: Paid vs. Free</h2>
             <p class="text-lg text-gray-700 mb-8 max-w-4xl mx-auto text-center">The project's cost is almost entirely a single, one-time hardware investment. The vast majority of the "Island" ecosystem—the OS, runtimes, applications, and models—is free and open-source.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <div class="border-t-4 border-primary p-6 rounded-lg shadow-md bg-EDF1F6 reveal-item">
+                <div class="border-t-4 border-primary p-6 rounded-lg shadow-md bg-light reveal-item">
                     <h3 class="text-2xl font-bold text-primary mb-3">One-Time Costs (Paid)</h3>
                     <ul class="list-disc list-outside ml-5 space-y-1 text-dark">
                         <li>The Hardware (PC Build)</li>
@@ -367,7 +370,7 @@
                     </ul>
                 </div>
 
-                <div class="border-t-4 border-secondary p-6 rounded-lg shadow-md bg-EDF1F6 reveal-item">
+                <div class="border-t-4 border-secondary p-6 rounded-lg shadow-md bg-light reveal-item">
                     <h3 class="text-2xl font-bold text-secondary mb-3">Recurring Costs (Paid)</h3>
                     <ul class="list-disc list-outside ml-5 space-y-1 text-dark">
                         <li>Electricity (Monitored)</li>
@@ -375,8 +378,8 @@
                     </ul>
                 </div>
                 
-                <div class="border-t-4 border-accent p-6 rounded-lg shadow-md bg-EDF1F6 reveal-item">
-                    <h3 class="text-2xl font-bold text-accent mb-3">Free (Unpaid) Components</h3>
+                <div class="border-t-4 border-accent p-6 rounded-lg shadow-md bg-light reveal-item">
+                    <h3 class="text-2xl font-bold text-secondary mb-3">Free (Unpaid) Components</h3>
                     <ul class="list-disc list-outside ml-5 space-y-1 text-dark">
                         <li>Operating System (Ubuntu)</li>
                         <li>Runtimes (Ollama, ComfyUI)</li>
@@ -388,37 +391,30 @@
         </section>
 
 
-        <!-- ********************************************************** -->
-        <!-- SECTION 2: WRITTEN REPORT (Deep Dive Markdown Content) -->
-        <!-- ********************************************************** -->
-
         <section id="report" class="lg:col-span-3 pt-6">
-             <!-- Invisible buffer div to prevent fixed header from covering content when scrolling to this anchor -->
              <div class="h-20 sm:h-24"></div>
-
             <h2 class="text-4xl font-extrabold text-primary mb-6 text-center">Written Report: Project Deep Dive and Execution</h2>
             <p class="text-xl text-gray-700 mb-8 max-w-4xl mx-auto text-center">The full, detailed analysis covering the philosophy, component breakdown, and long-term operational strategy.</p>
         </section>
 
-        <section class="lg:col-span-3 bg-white p-8 rounded-lg shadow-lg deep-dive">
+        <section class="lg:col-span-3 bg-accent p-8 rounded-lg shadow-lg deep-dive">
             <h2 class="text-3xl font-bold text-secondary mb-6">Project "Island" Deep Dive: Computational Sovereignty and Execution Plan</h2>
 
             <p>This document provides a comprehensive synthesis of the Project "Island" Workstation, detailing the core rationale, technical architecture, complete financial breakdown, implementation roadmap, and long-term operational strategy.</p>
             
             <h3 id="rationale">1. Project Rationale: Why Local-First?</h3>
-            <p>The "Island" model is an exercise in computational sovereignty, pivoting away from the dominant "Cloud" (Service-Based) model. The core philosophy dictates that for sensitive academic and creative work, the benefits of privacy and control far outweigh the initial complexity.</p>
+            <p>The "Island" model is an exercise in computational sovereignty, pivoting away from the dominant Cloud (Service-Based) model. The core philosophy dictates that for sensitive academic and creative work, the benefits of privacy and control far outweigh the initial complexity.</p>
             
             <div class="overflow-x-auto my-4">
                 <table class="w-full min-w-max border border-gray-200 divide-y divide-gray-200">
                     <thead class="bg-subtle-bg">
                         <tr>
                             <th class="p-4 text-left text-sm font-semibold text-secondary uppercase tracking-wider">Rationale</th>
-                            <th class="p-4 text-left text-sm font-semibold text-secondary uppercase tracking-wider">"Cloud" Model</th>
+                            <th class="p-4 text-left text-sm font-semibold text-secondary uppercase tracking-wider">Cloud Model</th>
                             <th class="p-4 text-left text-sm font-semibold text-secondary uppercase tracking-wider">"Island" Model</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
+                    <tbody class="bg-white divide-y divide-gray-200"> <tr>
                             <td class="p-4 font-semibold">Data Privacy</td>
                             <td class="p-4">Contractual. Data resides on third-party servers.</td>
                             <td class="p-4 font-bold text-primary">Physical. Data never leaves local drive.</td>
@@ -440,7 +436,7 @@
             <h3 id="architecture">2. Technical Architecture & Hardware Selection</h3>
             <p>The workstation is defined by a 5-layer ecosystem, where the GPU is the brain and its memory (VRAM) is the critical bottleneck.</p>
             
-            <h4 class="text-xl font-semibold text-accent mt-4">The 5-Layer Stack</h4>
+            <h4 class="text-xl font-semibold text-secondary mt-4">The 5-Layer Stack</h4>
             <ol>
                 <li>Layer 1 (Hardware): The physical PC. The GPU VRAM is the single most critical component.</li>
                 <li>Layer 2 (OS): Ubuntu Linux (native and most stable for open-source AI).</li>
@@ -452,7 +448,7 @@
             <h3 id="cost">3. Project Cost and Target Build</h3>
             <p>The "Better (Target 'Island')" build is the clear recommendation, providing high-speed inference and the 16GB capacity required for custom fine-tuning of 7B-13B models.</p>
 
-            <h4 class="text-xl font-semibold text-accent mt-4">Itemized Bill of Materials (Estimated)</h4>
+            <h4 class="text-xl font-semibold text-secondary mt-4">Itemized Bill of Materials (Estimated)</h4>
             <p>The total project investment is projected at ~$2,450 - $2,975 (one-time capital expense).</p>
             <ul class="list-disc ml-6">
                 <li>GPU: NVIDIA RTX 4070 Ti SUPER (16GB) - ~$800 - $950</li>
@@ -475,32 +471,26 @@
             <h3 id="execution">5. Implementation Roadmap and Operations</h3>
             <p>The setup is a precise 7-phase process, starting with the physical build and culminating in performance benchmarking.</p>
 
-            <h4 class="text-xl font-semibold text-accent mt-4">Data Lifecycle & ZFS Strategy</h4>
+            <h4 class="text-xl font-semibold text-secondary mt-4">Data Lifecycle & ZFS Strategy</h4>
             <p>Data integrity is achieved using the ZFS filesystem on the 16TB Cold Storage ("Vault") drive for robust, block-level snapshot backups.</p>
             <ul class="list-disc ml-6">
                 <li>Nightly (On-Site): A code job automatically creates a ZFS snapshot of user data.</li>
                 <li>Bi-Weekly (Off-Site): A manual process creates an encrypted, incremental copy onto a 4TB External USB drive for disaster recovery.</li>
             </ul>
 
-            <h4 class="text-xl font-semibold text-accent mt-4">Hardware Life Expectancy & Upgrade Path</h4>
-            <p>The system’s relevance is tied to the GPU VRAM. The strategic plan is a Modular Upgrade: when VRAM demands rise in 3–5 years, we simply swap the GPU for a newer, higher-VRAM model, instantly upgrading the "Island’s" brain.</p>
+            <h4 class="text-xl font-semibold text-secondary mt-4">Hardware Life Expectancy & Upgrade Path</h4>
+            <p>The system’s relevance is tied to the GPU VRAM. The strategic plan is a Modular Upgrade: when VRAM demands rise in 3–5 years, we simply swap the GPU for a newer, higher-VRAM model, instantly upgrading the Island’s brain.</p>
 
         </section>
 
 
-        <!-- ********************************************************** -->
-        <!-- SECTION 3: AUDIO SUMMARY (STATIC LINK) -->
-        <!-- ********************************************************** -->
-
         <section id="audio" class="lg:col-span-3">
-             <!-- Invisible buffer div to prevent fixed header from covering content when scrolling to this anchor -->
              <div class="h-20 sm:h-24"></div>
-
             <h2 class="text-4xl font-extrabold text-primary mb-6 text-center">Audio Summary: Listen to the Deep Dive</h2>
             <p class="text-xl text-gray-700 mb-8 max-w-4xl mx-auto text-center">Listen to the full project narrative. The audio is hosted on the server for instant, reliable playback.</p>
         </section>
 
-        <section class="lg:col-span-3 bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-D0E3FF">
+        <section class="lg:col-span-3 bg-accent p-6 sm:p-8 rounded-xl shadow-lg border border-light">
             <h3 class="text-2xl font-bold text-primary mb-4">Project Audio Player</h3>
             
             <div class="mb-4">
@@ -508,7 +498,7 @@
             </div>
 
             <h4 class="text-xl font-semibold text-gray-700 mt-8 mb-3">Narrative Summary:</h4>
-            <div id="scriptContent" class="w-full bg-EDF1F6 p-4 border rounded text-sm text-gray-600 overflow-auto max-h-48">
+            <div id="scriptContent" class="w-full bg-light p-4 border rounded text-sm text-gray-600 overflow-auto max-h-48">
                 <ul class="list-disc ml-4 space-y-2">
                     <li>Welcome to the deep dive on Project Island: The blueprint for achieving computational sovereignty. Our core rationale is freedom. We help people to pivot away from the Cloud, rejecting its contractual privacy, where data sits on remote corporate servers.</li>
                     <li>The Island offers physical privacy—meaning your proprietary research never leaves your local hard drive. This system provides total control, eliminating corporate guardrails and unrestricted creative and academic experimentation.</li>
@@ -528,20 +518,20 @@
     <footer class="bg-primary p-8 sm:p-12 mt-8 sm:mt-12">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-3xl font-bold text-white mb-4">Forward Vision: A New Paradigm</h2>
-            <p class="text-lg sm:text-xl text-white max-w-4xl mx-auto">This workstation is a prototype for a new academic and creative model—one where computational sovereignty, privacy, and creativity converge. It is not just a tool, but a philosophical and infrastructural statement.</p>
+            <p class="text-lg sm:text-xl text-light max-w-4xl mx-auto">This workstation is a prototype for a new academic and creative model—one where computational sovereignty, privacy, and creativity converge. It is not just a tool, but a philosophical and infrastructural statement.</p>
         </div>
-    </section>
+    </footer>
 
     <script>
-        // gsap.registerPlugin(ScrollTrigger);
-
         /* --- Chart.js Setup --- */
         window.onload = function () {
             
-            const primaryColor = '#081F5C';
-            const secondaryColor = '#7096D1';
-            const accentColor = '#D0E3FF';
-            const lightColor = '#EDF1F6';
+            // Updated Color Variables
+            const primaryColor = '#431c5d';     // Purple
+            const secondaryColor = '#e05915';   // Orange
+            const accentColor = '#bccbde';      // Grey silver
+            const lightColor = '#c2dde6';       // Lightsaber Blue
+            const yellowColor = '#cdd422';      // Yellowbrite
 
             const tooltipTitleCallback = (tooltipItems) => {
                 const item = tooltipItems[0];
@@ -659,7 +649,8 @@
                     datasets: [{
                         label: 'Est. Annual Power Cost ($)',
                         data: [580, 774, 1032, 315, 1400],
-                        backgroundColor: [primaryColor, secondaryColor, accentColor, lightColor, '#D0E3FF'],
+                        // Updated color palette
+                        backgroundColor: [primaryColor, secondaryColor, yellowColor, accentColor, lightColor], 
                     }]
                 },
                 options: {
@@ -710,7 +701,19 @@
                     datasets: [{
                         label: 'Cost Composition',
                         data: [875, 388, 250, 275, 275, 225, 175, 125, 100, 25],
-                        backgroundColor: [primaryColor, secondaryColor, accentColor, lightColor, '#D0E3FF', '#4c6499', '#90b0e0', '#adc1e6', '#c4d4ec', '#f1f4f9'],
+                        // Updated 10-color palette
+                        backgroundColor: [
+                            primaryColor,    // #431c5d
+                            secondaryColor,  // #e05915
+                            yellowColor,     // #cdd422
+                            '#6a4a8f',       // Lighter Purple
+                            '#f08b52',       // Lighter Orange
+                            accentColor,     // #bccbde
+                            '#e6ea5e',       // Lighter Yellow
+                            lightColor,      // #c2dde6
+                            '#2b113b',       // Darker Purple
+                            '#a6430f'        // Darker Orange
+                        ],
                         borderColor: '#fff',
                         borderWidth: 2
                     }]
@@ -740,34 +743,7 @@
         };
         /* --- End Chart.js Setup --- */
 
-
-        /* --- GSAP Scroll Animations --- */
-
-        /* gsap.utils.toArray('.scroll-reveal').forEach(element => {
-            gsap.from(element, {
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                ease: 'power2.out',
-                scrollTrigger: {
-                    trigger: element,
-                    start: 'top 85%', 
-                    toggleActions: 'play none none none',
-                }
-            });
-        }); */
-
-        /* Rationale Cards (staggered animation on load) */
-        /* gsap.from('.rationale-card', {
-            opacity: 0,
-            x: 50,
-            stagger: 0.2,
-            duration: 0.8,
-            ease: 'back.out(1.2)',
-            delay: 0.5 
-        }); */
-
-        /* Custom smooth scrolling for GitHub Pages, as scroll-behavior: smooth may not work well in some iframe environments */
+        /* Custom smooth scrolling */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
