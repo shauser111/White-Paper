@@ -72,6 +72,11 @@
             text-rendering: optimizeLegibility;
             font-feature-settings: 'liga';
         }
+
+        /* --- ADDED THIS FOR AUTO-HIDE --- */
+        header.hmh-header {
+            transition: transform 0.3s ease-in-out;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -92,22 +97,21 @@
         }
     </script>
 </head>
-<body class="text-dark"> <nav class="fixed top-0 left-0 right-0 bg-primary shadow-xl z-50"> <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
-                <div class="flex items-center">
-                    <span class="text-2xl font-bold text-white tracking-wider">PROJECT ISLAND</span>
-                </div>
-                <div class="flex items-center space-x-4 sm:space-x-8">
-                    <a href="#visuals" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition duration-150">Visual Analysis</a>
-                    <a href="#report" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition duration-150">Written Report</a>
-                    <a href="#audio" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition duration-150">Audio Summary</a>
-                    <a href="https://happymachinesandhumans.com" target="_blank" class="text-white hover:text-secondary px-3 py-2 rounded-md text-sm font-medium transition duration-150">HMH</a>
-                </div>
-            </div>
-        </div>
-    </nav>
+<body class="text-dark">
 
-    <header class="bg-primary text-white p-8 sm:p-12 shadow-xl"> <div class="max-w-7xl mx-auto">
+    <header class="hmh-header bg-primary sticky top-0 z-50 shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            
+            <a href="#" onclick="window.scrollTo(0, 0); return false;" class="text-2xl font-bold text-white tracking-wider no-underline">HAPPY MACHINES + HUMANS</a>
+            
+            <div class="flex items-center space-x-4">
+                 <a href="https://happymachinesandhumans.com/" class="bg-primary-light/50 text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-primary-light/80 no-underline">Back to Main</a>
+            </div>
+        </nav>
+    </header>
+
+    <header class="bg-primary text-white p-8 sm:p-12 shadow-xl"> 
+        <div class="max-w-7xl mx-auto">
             <p class="text-lg sm:text-xl font-semibold text-secondary uppercase tracking-wide">Project Briefing P-AI-LOCAL-001</p>
             <h1 class="text-4xl sm:text-6xl font-bold mt-2 mb-4">The Island Workstation</h1>
             <p class="text-xl sm:text-2xl text-light max-w-4xl">A unified hub for the project's visual, written, and auditory deep dives, centered on <span class="font-bold text-white">computational sovereignty</span>.</p>
@@ -743,7 +747,7 @@
         };
         /* --- End Chart.js Setup --- */
 
-        /* Custom smooth scrolling */
+        /* Custom smooth scrolling for on-page anchors */
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -762,6 +766,25 @@
                     });
                 }
             });
+        });
+    </script>
+    
+    <script>
+        let lastScrollTop = 0;
+        // Selects the first <header> tag on the page, which is the new one
+        const header = document.querySelector('header.hmh-header'); 
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) { 
+                // Scrolling Down
+                if (header) header.style.transform = 'translateY(-100%)';
+            } else {
+                // Scrolling Up
+                if (header) header.style.transform = 'translateY(0)';
+            }
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         });
     </script>
 </body>
